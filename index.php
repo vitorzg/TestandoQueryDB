@@ -1,30 +1,30 @@
 <?php
-require_once("Conn.php");
+    require_once("Conn.php");
 
-$db = new Database();
-$query = "SELECT * FROM items";
-$stmt = $db->conn->prepare($query);
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $db = new Database();
+    $query = "SELECT * FROM itens WHERE status = 'PD'";
+    $stmt = $db->conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($result as $row) {
-?>
+    foreach ($result as $row) {
+    ?>
 
-    <form>
+        <form>
 
-        <label>ID : <?=$row['ID']?></label>
+            <label>ID : <?=$row['ID']?></label>
 
-        <input type="text" value="<?=$row['desc']?>">
+            <textarea cols="30" rows="5" style="resize: none;"><?=$row['item']?></textarea>
 
-        <input type="submit" value="Accept">
+            <input type="submit" value="Accept">
 
-        <input type="submit" value="Deny">
+            <input type="submit" value="Deny">
 
-    </form>
+        </form>
 
-<?php
-}
+    <?php
+    }
 
-$stmt->closeCursor();
-$db->conn = null;
+    $stmt->closeCursor();
+    $db->conn = null;
 ?>
