@@ -10,15 +10,14 @@
     foreach ($result as $row) {
     ?>
 
-        <form>
+        <form method="post" action="./src/validate.php">
 
-            <label>ID : <?=$row['ID']?></label>
+            <label>ID :</label>
+            <input type="number" name="id" id="id" value="<?=$row['ID']?>">
 
-            <textarea cols="30" rows="5" style="resize: none;"><?=$row['item']?></textarea>
+            <input type="text" name="msg" id="msg" value="<?=$row['item']?>">
 
-            <input type="submit" value="Accept">
-
-            <input type="submit" value="Deny">
+            <button type="submit" value="Accept">Aceitar</button>
 
         </form>
 
